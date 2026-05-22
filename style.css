@@ -1054,36 +1054,39 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* --- KODE PENYELAMAT TAMPILAN HP (MOBILE RESPONSIVE) --- */
-
+/* --- OPSI NUKLIR: MEMAKSA SPACE HP MENJADI RAPAT --- */
 @media screen and (max-width: 768px) {
-  /* 1. Menghapus tinggi paksa dan jarak kosong yang berlebihan antar bagian */
-  section, .hero, .about, .project {
-    min-height: auto !important; 
-    padding: 50px 20px !important; /* Mengurangi jarak atas-bawah jadi lebih rapi */
+  
+  /* 1. Paksa semua section dan container untuk lepas dari tinggi laptop (vH) */
+  html, body, section, id, div, 
+  .hero, #hero, .home, #home, .main,
+  [class*="hero"], [class*="home"], [class*="container"] {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* 2. Bersihkan padding/jarak raksasa yang tidak sengaja bocor */
+  section, .hero, .home, .about {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
 
-  /* 2. Memaksa elemen yang bersebelahan menjadi numpuk atas-bawah */
-  /* Catatan: Kalau nama class kotak utamanya beda, tambahkan di sini */
-  .hero-container, .row, .container, .about-content {
+  /* 3. Paksa susunan text dan kartu profil menumpuk ke bawah, bukan ke samping */
+  .hero-container, .container, .row, [class*="wrapper"], [class*="content"] {
     display: flex !important;
-    flex-direction: column !important; /* Ini kunci utamanya! */
+    flex-direction: column !important; /* Membuat susunan vertikal */
+    justify-content: center !important;
     align-items: center !important;
+    gap: 25px !important; /* Jarak ideal antar elemen di HP */
     text-align: center !important;
-    gap: 40px !important; /* Jarak pas antar tulisan dan kartu profil */
   }
 
-  /* 3. Menyesuaikan ukuran kartu/gambar agar tidak kepotong di HP */
-  .profile-card, .card, img {
-    width: 100% !important;
-    max-width: 320px !important;
+  /* 4. Pastikan teks deskripsi di HP tidak melar berantakan */
+  p, .description {
+    max-width: 90% !important;
     margin: 0 auto !important;
-  }
-  
-  /* 4. Menyesuaikan ukuran font jika terlalu besar di HP */
-  h1 {
-    font-size: 2.5rem !important;
   }
 }
 
